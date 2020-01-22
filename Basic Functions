@@ -1,0 +1,53 @@
+###########################################################################################
+##                             Character Declarations                                    ##
+###########################################################################################
+
+# Declaring the variable "c" as displaying the Character name and establishing the image set c
+define c = Character("Character Name", image = "c")
+
+# Declaring NVL mode as text with no character variable.
+define narrator = nvl_narrator
+
+###########################################################################################
+##                                Character Sprites                                      ##
+###########################################################################################
+
+# Declaring the image set for the variable c with six different sample expressions
+image c happy = #image path
+image c blush = #image path
+image c neutral = #image path
+image c resigned = #image path
+image c shocked = #image path
+image c upset = #image path
+
+###########################################################################################
+##                               Audio Declarations                                      ##
+###########################################################################################
+
+# Declaring names for the audio file "sample"
+define audio.sample = #image path
+
+# Adding a separate channel to play the sample audio simultaneously with the previously playing audio
+init python:
+    renpy.music.register_channel("sample", mixer=None, loop=True, stop_on_mute=True, tight=False, file_prefix='', file_suffix='', buffer_queue=True, movie=False, framedrop=True)
+    
+###########################################################################################
+##                           Background Declarations                                     ##
+###########################################################################################
+
+# Declaring a solid color (black) background 
+image black = "#000000"
+
+# Adding a sepia filter over an existing background
+image bg sample = im.Sepia("#image path")
+
+# Adding or changing the position of a sprite onscreen.
+init:
+    $ sampleposition = Position (xpos = x, ypos = y, xanchor = x, yanchor = y)
+    
+###########################################################################################
+##                               Game File Changes                                       ##
+###########################################################################################
+
+# Declare a variable that persists outside of the current playthrough
+define persistent.variable = False
